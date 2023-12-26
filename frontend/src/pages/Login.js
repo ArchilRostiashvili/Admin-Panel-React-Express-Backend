@@ -9,6 +9,16 @@ const Login = () => {
     const handleLoginSubmit = async (i) =>{
         i.preventDefault();
         await login(email, password);
+
+        // const patchResponse = await fetch('./api/user', {
+        //     method: 'PATCH',
+        //     headers: {
+        //         'Content-Type': 'application/json',
+        //     },
+        //     body: JSON.stringify({
+        //         "lastupdate": Date.now
+        //     })
+        // });
     }
 
     return ( 

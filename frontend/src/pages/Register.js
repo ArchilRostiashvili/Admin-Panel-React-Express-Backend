@@ -2,6 +2,8 @@ import { useState } from "react";
 import { useRegister } from "../hooks/useRegister";
 
 const Register = () => {
+    const [name, setName] = useState('');
+    const [surname, setSurname] = useState('');
     const [password, setPassword] = useState('');
     const [email, setEmail] = useState('');
     const [position, setPosition] = useState('');
@@ -9,13 +11,22 @@ const Register = () => {
 
     const handleLoginSubmit = async (i) =>{
         i.preventDefault();
-        await signup(email, password, position);
+        const fullname = name + ' ' + surname;
+        await signup(email, password, fullname, position);
     }
 
     return ( 
         <div>
             <form className="login-form" onSubmit={handleLoginSubmit}>
                 <h2>Sign-Up</h2>
+                <label>Enter Your Name</label>
+                <input 
+                type="text" onChange={(e)=>setName(e.target.value)} value={name} 
+                />
+                <label>Enter Your Surname</label>
+                <input 
+                type="text" onChange={(e)=>setSurname(e.target.value)} value={surname} 
+                />
                 <label>Enter Your Email</label>
                 <input 
                 type="email" onChange={(e)=>setEmail(e.target.value)} value={email} 

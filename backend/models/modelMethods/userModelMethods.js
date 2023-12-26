@@ -1,8 +1,8 @@
 const bcrypt = require('bcrypt');
 const validator = require('validator');
 
-const signupUser = async function(email, password, position, blocked, lastLogin){
-    if(!password || !email){
+const signupUser = async function(email, password, fullname, position, blocked, lastLogin){
+    if(!password || !email || !fullname){
         throw Error('All fields are required');
     } else if(!validator.isEmail(email)){
         throw Error('invalid email address');
@@ -17,7 +17,7 @@ const signupUser = async function(email, password, position, blocked, lastLogin)
     const salt = await bcrypt.genSalt(7);
     const hash = await bcrypt.hash(password, salt);
 
-    const user = await this.create({email, password: hash, position, 
+    const user = await this.create({email, password: hash, fullname, position, 
         blocked, lastLogin});
 
     return user;
@@ -29,6 +29,7 @@ const loginUser = async function(email, password){
     }
 
     const user = await this.findOne({email});
+
     const matchingPassword = await bcrypt.compare(password, user.password);
     if(!user || !matchingPassword){
         throw Error('Incorrect email or password');

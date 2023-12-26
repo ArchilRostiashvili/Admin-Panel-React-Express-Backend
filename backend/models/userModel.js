@@ -3,6 +3,8 @@ const {signupUser, loginUser} = require('./modelMethods/userModelMethods');
 
 const Schema = mongoose.Schema;
 
+const moment = require('moment');
+
 const userSchema = new Schema({
     email:{
         type: String,
@@ -10,6 +12,10 @@ const userSchema = new Schema({
         unique: true,
     },
     password: {
+        type: String,
+        required: true
+    },
+    fullname:{
         type: String,
         required: true
     }
@@ -27,7 +33,7 @@ const userSchema = new Schema({
         type: Date,
         default: Date.now
     }
-})
+}, { timestamps: true })
 
 // signup method
 userSchema.statics.signup = signupUser;

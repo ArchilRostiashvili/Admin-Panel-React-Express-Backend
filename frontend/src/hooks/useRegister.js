@@ -6,7 +6,7 @@ export const useRegister = ()=>{
     const [error, setError] = useState(null);
     const {dispatch} = useAuthContext();
 
-    const signup = async (email, password, position)=>{
+    const signup = async (email, password, fullname, position)=>{
         setIsLoading(true);
         setError(null);
 
@@ -14,7 +14,7 @@ export const useRegister = ()=>{
         const response = await fetch('./api/user/signup', {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({email, password, position})
+            body: JSON.stringify({email, password, fullname, position})
         })
         const json = await response.json();
 
