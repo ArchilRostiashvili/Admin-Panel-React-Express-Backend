@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 import { useAuthContext } from '../hooks/useAuthContext'
 import { useLogout } from '../hooks/useLogout';
 
@@ -11,15 +11,14 @@ const Navbar = () => {
     }
 
     return ( 
-        <header>
+        <header className='absolute bg-blue-400 w-full flex justify-end min-h-12 items-center'>
             {!user &&
-                <div className="header-content">
-                    <Link to='/login'>Log-In</Link>
-                    <Link to='/signup'>Create a new account</Link>
+                <div className='pr-10'>
+                    <Link className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded' to='/login'>Log-In</Link>
                 </div>
             }
             {user &&
-                <button onClick={handleClickLogout}>Log out</button> 
+                <button className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded' onClick={handleClickLogout}>Log out</button> 
             }
         </header>
     );
