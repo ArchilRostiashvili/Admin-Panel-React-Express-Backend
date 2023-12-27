@@ -1,7 +1,7 @@
 export const blockUsers = (selectedUsers, user) => {
   selectedUsers.forEach((usr) => {
     const blockU = async () => {
-      await fetch('http://taskfour-backend.onrender.com/api/user/' + usr._id, {
+      await fetch('http://localhost:4000/api/user/' + usr._id, {
         method: 'PATCH',
         headers: {
           'Authorization': `Bearer ${user.token}`,
@@ -20,7 +20,7 @@ export const blockUsers = (selectedUsers, user) => {
 export const unblockUsers = (selectedUsers, user) => {
   selectedUsers.forEach((usr) => {
     const unblockU = async () => {
-      await fetch('http://taskfour-backend.onrender.com/api/user/' + usr._id, {
+      await fetch('http://localhost:4000//api/user/' + usr._id, {
         method: 'PATCH',
         headers: {
           'Authorization': `Bearer ${user.token}`,
@@ -38,7 +38,7 @@ export const unblockUsers = (selectedUsers, user) => {
 export const deleteUsers = (selectedUsers, user) => {
   selectedUsers.forEach((usr) => {
     const deleteU = async () => {
-      await fetch('http://taskfour-backend.onrender.com/api/user/' + usr._id, {
+      await fetch('http://localhost:4000/api/user/' + usr._id, {
         method: 'DELETE',
         headers: {
           'Authorization': `Bearer ${user.token}`

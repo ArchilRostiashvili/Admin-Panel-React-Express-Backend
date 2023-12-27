@@ -9,7 +9,7 @@ const Main = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch('http://taskfour-backend.onrender.com/api/user', {
+                const response = await fetch('http://localhost:4000/api/user', {
                     method: 'GET',
                     headers: { 'Authorization': `Bearer ${user.token}` }
                 });
