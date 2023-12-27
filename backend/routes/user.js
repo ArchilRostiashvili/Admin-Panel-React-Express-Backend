@@ -6,11 +6,16 @@ deleteUser,
 updateUser
 } = require('../controllers/userController');
 const router = express.Router();
+const requireAuth = require('../middleware/requireAuth');
+
 
 // signup route
 router.post('/signup', signupUser);
 
 router.post('/login', loginUser);
+
+// require auth for all
+router.use(requireAuth);
 
 ///////////////////////////////////
 // get single user

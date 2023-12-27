@@ -1,11 +1,10 @@
-
-
-export const blockUsers = (selectedUsers) => {
+export const blockUsers = (selectedUsers, user) => {
     selectedUsers.map((usr) => {
       const blockU = async () => {
-        await fetch('api/user/' + usr._id, {
+        await fetch('http://localhost:4000/api/user/' + usr._id, {
           method: 'PATCH',
           headers: {
+            'Authorization': `Bearer ${user.token}`,
             'Content-Type': 'application/json'
           },
           body: JSON.stringify({
@@ -18,12 +17,13 @@ export const blockUsers = (selectedUsers) => {
     });
   };
 
-export const unblockUsers = (selectedUsers) => {
+export const unblockUsers = (selectedUsers, user) => {
     selectedUsers.map((usr) => {
       const unblockU = async () => {
-        await fetch('api/user/' + usr._id, {
+        await fetch('http://localhost:4000/api/user/' + usr._id, {
           method: 'PATCH',
           headers: {
+            'Authorization': `Bearer ${user.token}`,
             'Content-Type': 'application/json'
           },
           body: JSON.stringify({
@@ -36,12 +36,14 @@ export const unblockUsers = (selectedUsers) => {
     });
   };
 
-export const deleteUsers = (selectedUsers) => {
+export const deleteUsers = (selectedUsers, user) => {
     selectedUsers.map((usr) => {
       const deleteU = async () => {
-        await fetch('/api/user/' + usr._id, {
+        await fetch('http://localhost:4000/api/user/' + usr._id, {
           method: 'DELETE',
-          headers: {}
+          headers: {
+            'Authorization': `Bearer ${user.token}`
+          }
         })
       }
 

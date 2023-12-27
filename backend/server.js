@@ -2,17 +2,23 @@ require('dotenv').config()
 const express = require('express');
 const mongoose = require('mongoose');
 
-// testing
-const request = require("supertest");
+// exress app 
+const app = express();
+
+// cors
+const cors = require('cors');
+
 
 // routes requests
 userRoutes = require('./routes/user');
 
-// exress app 
-const app = express();
+app.use(cors({
+   origin: "http://localhost:3000",
+}))
 
 // middleware
 app.use(express.json())
+
 
 app.use((req,res,next)=>{
     console.log('path: ' + req.path, 'method: ' + req.method, 'req body: ' + req.body);
