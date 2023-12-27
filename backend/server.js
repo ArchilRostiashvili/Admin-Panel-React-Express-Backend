@@ -8,13 +8,16 @@ const app = express();
 // cors
 const cors = require('cors');
 
+const allowedOrigins = ['http//:localhost:3000', 'https://taskfour-frontend.onrender.com'];
+
+app.use(cors({
+   origin: allowedOrigins,
+}));
+
 
 // routes requests
 userRoutes = require('./routes/user');
 
-app.use(cors({
-   origin: "*",
-}))
 
 // middleware
 app.use(express.json())
