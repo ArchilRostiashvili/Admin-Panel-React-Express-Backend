@@ -13,7 +13,7 @@ const cors = require('cors');
 userRoutes = require('./routes/user');
 
 app.use(cors({
-   origin: "http://taskfour-frontend.onrender.com",
+   origin: "*",
 }))
 
 // middleware
