@@ -3,7 +3,7 @@ import { useAuthContext } from '../hooks/useAuthContext';
 import UsersDetails from '../components/UsersDetails';
 
 const Main = () => {
-    const { user, dispatch, logout } = useAuthContext();
+    const { user, dispatch } = useAuthContext();
     const [users, setUsers] = useState(null);
 
     useEffect(() => {
@@ -25,30 +25,7 @@ const Main = () => {
             }
         };
         fetchData();
-    }, [user]);
-
-    const COLUMNS = [
-        {
-            Header: "Name",
-            accessor: "fullname"
-        },
-        {
-            Header: "Position",
-            accessor: "position"
-        },
-        {
-            Header: "e-Mail",
-            accessor: "email"
-        },
-        {
-            Header: "Last login",
-            accessor: "lastlogin"
-        },
-        {
-            Header: "Status",
-            accessor: "status"
-        }
-    ];
+    }, [user, dispatch]); // Include 'dispatch' in the dependency array
 
     return (
         <div className='flex justify-center pt-20 h-screen 
@@ -59,5 +36,6 @@ const Main = () => {
 }
 
 export default Main;
+
 
 
